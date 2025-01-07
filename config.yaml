@@ -1,0 +1,14 @@
+credentials:
+  usernames:
+    admin:
+      email: admin@company.com
+      name: Admin User
+      password: $2b$12$WoNp6hULuz5AkeOpHsFY.uu7KSiHAF0BpEFRKZGHXqSsyLSTobZA6  # admin123
+    analyst:
+      email: analyst@company.com
+      name: Data Analyst
+      password: $2b$12$WoNp6hULuz5AkeOpHsFY.uu7KSiHAF0BpEFRKZGHXqSsyLSTobZA6  # admin123
+cookie:
+  expiry_days: 30
+  key: "random_signature_key"
+  name: "streamlit_auth_cookie" 
