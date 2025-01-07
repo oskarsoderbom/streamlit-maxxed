@@ -16,18 +16,42 @@
 
 /* Global Styles */
 .stApp {
-    background-color: var(--background-color);
+    background-image: linear-gradient(to bottom, rgba(17, 24, 39, 0.95), rgba(17, 24, 39, 0.95)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Remove default backgrounds */
+.stApp > header {
+    background-color: transparent !important;
+}
+
+.main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Hide decoration containers */
+[data-testid="stDecoration"] {
+    display: none;
+}
+
+/* Make specific containers transparent */
+.element-container, .stMarkdown, .stButton {
+    background-color: transparent !important;
 }
 
 /* Sidebar Styling */
 section[data-testid="stSidebar"] {
-    background-color: var(--surface-color);
+    background-color: rgba(31, 41, 55, 0.8) !important;
+    backdrop-filter: blur(10px);
     border-right: 1px solid var(--border-color);
-    padding: 2rem 0;
 }
 
 section[data-testid="stSidebar"] .block-container {
-    padding-top: 1rem;
+    padding-top: 2rem;
 }
 
 /* Headers */
@@ -48,25 +72,73 @@ h2 {
     margin-bottom: 1.25rem;
 }
 
-/* Card Components */
-div.stCard {
-    background: var(--surface-color);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    border: 1px solid var(--border-color);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* Charts and Plots */
+div[data-testid="stPlotlyChart"] {
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    margin: 0 !important;
 }
 
-div.stCard:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0,0,0,0.3);
-    background: var(--surface-color-hover);
+/* Chart container styling */
+div[data-testid="column"] {
+    background-color: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 1rem !important;
+    margin: 0.5rem !important;
+}
+
+/* Fix chart spacing */
+div[data-testid="stHorizontalBlock"] {
+    gap: 1rem;
+    padding: 0.5rem;
+}
+
+/* Section headers */
+div.stMarkdown h3 {
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+    padding: 0 0.5rem !important;
+}
+
+/* Chart title styling */
+.js-plotly-plot .plotly .gtitle {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 1rem !important;
+    fill: var(--text-secondary) !important;
+}
+
+/* Ensure proper spacing between sections */
+div.block-container {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+/* Remove default padding from columns */
+div.row-widget.stHorizontalBlock {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Ensure charts fill their containers */
+.js-plotly-plot, .plot-container {
+    width: 100% !important;
 }
 
 /* Metrics Styling */
+div[data-testid="metric-container"] {
+    background-color: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 1rem !important;
+    border: 1px solid var(--border-color);
+    margin: 0.5rem !important;
+}
+
 div[data-testid="stMetricValue"] {
-    font-size: 2rem;
+    font-size: 2rem !important;
     font-weight: 700;
     color: var(--text-primary);
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -79,6 +151,7 @@ div[data-testid="stMetricDelta"] {
 }
 
 div[data-testid="stMetricLabel"] {
+    font-size: 1rem;
     color: var(--text-secondary);
 }
 
@@ -102,7 +175,8 @@ div.stButton > button:hover {
 div.stTextInput > div > div > input,
 div.stSelectbox > div > div > select,
 div.stNumberInput > div > div > input {
-    background-color: var(--surface-color);
+    background-color: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(10px);
     color: var(--text-primary);
     border-radius: 8px;
     border: 1px solid var(--border-color);
@@ -119,10 +193,7 @@ div.stNumberInput > div > div > input:focus {
 
 /* Tabs styling */
 div.stTabs {
-    background: var(--surface-color);
-    border-radius: 12px;
-    padding: 1rem;
-    border: 1px solid var(--border-color);
+    background-color: transparent;
 }
 
 .stTabs [data-baseweb="tab-list"] {
@@ -142,45 +213,6 @@ div.stTabs {
     background-color: var(--primary-color);
 }
 
-/* Charts and Plots */
-div[data-testid="stPlotlyChart"] > div {
-    border-radius: 12px;
-    background: var(--surface-color);
-    padding: 1rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    border: 1px solid var(--border-color);
-}
-
-/* DataFrames */
-.dataframe {
-    border: none !important;
-    border-collapse: separate;
-    border-spacing: 0;
-    width: 100%;
-    margin: 1rem 0;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    background: var(--surface-color);
-    color: var(--text-primary);
-}
-
-.dataframe thead th {
-    background-color: var(--surface-color-hover);
-    padding: 1rem !important;
-    font-weight: 600;
-    color: var(--text-primary);
-    border: none !important;
-    text-align: left;
-}
-
-.dataframe tbody td {
-    padding: 1rem !important;
-    border: none !important;
-    border-top: 1px solid var(--border-color) !important;
-    color: var(--text-secondary);
-}
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
@@ -188,7 +220,7 @@ div[data-testid="stPlotlyChart"] > div {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--surface-color);
+    background: rgba(31, 41, 55, 0.7);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -200,14 +232,10 @@ div[data-testid="stPlotlyChart"] > div {
     background: var(--primary-color);
 }
 
-/* Loading Animation */
-div.stSpinner > div {
-    border-color: var(--primary-color) transparent transparent transparent;
-}
-
 /* Alert/Info boxes */
 div.stAlert {
     background-color: rgba(124,58,237,0.1);
+    backdrop-filter: blur(10px);
     color: var(--text-primary);
     border: 1px solid rgba(124,58,237,0.2);
     border-radius: 8px;
@@ -215,9 +243,13 @@ div.stAlert {
 }
 
 /* Select boxes and dropdowns */
-div.stSelectbox > div > div,
-div.stMultiSelect > div > div {
-    background-color: var(--surface-color);
+div.stSelectbox > div {
+    background-color: transparent;
+}
+
+div.stSelectbox > div > div {
+    background-color: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(10px);
     color: var(--text-primary);
 }
 
@@ -227,15 +259,25 @@ div.stMultiSelect > div > div {
     color: var(--text-secondary);
 }
 
-/* Expander */
-.streamlit-expanderHeader {
+/* Welcome message */
+p {
     color: var(--text-primary);
-    background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
 }
 
-.streamlit-expanderContent {
-    background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-top: none;
+/* Remove extra padding and margins */
+.stApp > .withScreencast > .main {
+    padding-top: 1rem;
+}
+
+div[data-testid="stVerticalBlock"] {
+    gap: 1rem;
+    padding: 0;
+}
+
+/* Fix for stacked containers */
+div[data-testid="stVerticalBlock"] > div > div {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 } 

@@ -283,10 +283,12 @@ try:
 
             # Engagement Metrics
             st.markdown("### Engagement Metrics")
-            metrics_col1, metrics_col2, metrics_col3 = st.columns(3)
 
-            with metrics_col1:
-                # Engagement by Channel
+            # Create columns with proper spacing
+            metrics_cols = st.columns([1, 1, 1])
+
+            with metrics_cols[0]:
+                # Traffic Sources
                 data = pd.DataFrame(
                     {
                         "Channel": ["Organic", "Social", "Email", "Referral", "Direct"],
@@ -309,19 +311,23 @@ try:
                     paper_bgcolor="rgba(0,0,0,0)",
                     plot_bgcolor="rgba(0,0,0,0)",
                     coloraxis_showscale=False,
-                    xaxis=dict(tickfont=dict(color="#D1D5DB"), showgrid=False),
+                    xaxis=dict(
+                        tickfont=dict(color="#D1D5DB"), showgrid=False, title=None
+                    ),
                     yaxis=dict(
                         tickfont=dict(color="#D1D5DB"),
                         showgrid=True,
                         gridcolor="rgba(255,255,255,0.1)",
+                        title=None,
                     ),
+                    margin=dict(l=40, r=20, t=40, b=40),
                 )
 
                 st.plotly_chart(
                     fig, use_container_width=True, config={"displayModeBar": False}
                 )
 
-            with metrics_col2:
+            with metrics_cols[1]:
                 # Device Distribution
                 devices = pd.DataFrame(
                     {"Device": ["Mobile", "Desktop", "Tablet"], "Sessions": [60, 35, 5]}
@@ -340,15 +346,22 @@ try:
                     showlegend=True,
                     paper_bgcolor="rgba(0,0,0,0)",
                     plot_bgcolor="rgba(0,0,0,0)",
-                    legend=dict(font=dict(color="#D1D5DB")),
+                    legend=dict(
+                        font=dict(color="#D1D5DB"),
+                        yanchor="middle",
+                        y=0.5,
+                        xanchor="center",
+                        x=0.5,
+                    ),
+                    margin=dict(l=20, r=20, t=40, b=20),
                 )
 
                 st.plotly_chart(
                     fig, use_container_width=True, config={"displayModeBar": False}
                 )
 
-            with metrics_col3:
-                # Engagement Time
+            with metrics_cols[2]:
+                # Session Duration
                 times = pd.DataFrame(
                     {
                         "Time": ["0-1m", "1-3m", "3-10m", "10m+"],
@@ -371,12 +384,16 @@ try:
                     paper_bgcolor="rgba(0,0,0,0)",
                     plot_bgcolor="rgba(0,0,0,0)",
                     coloraxis_showscale=False,
-                    xaxis=dict(tickfont=dict(color="#D1D5DB"), showgrid=False),
+                    xaxis=dict(
+                        tickfont=dict(color="#D1D5DB"), showgrid=False, title=None
+                    ),
                     yaxis=dict(
                         tickfont=dict(color="#D1D5DB"),
                         showgrid=True,
                         gridcolor="rgba(255,255,255,0.1)",
+                        title=None,
                     ),
+                    margin=dict(l=40, r=20, t=40, b=40),
                 )
 
                 st.plotly_chart(
