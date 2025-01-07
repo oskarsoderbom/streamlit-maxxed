@@ -1,0 +1,241 @@
+/* Modern color palette */
+:root {
+    --primary-color: #7C3AED;
+    --secondary-color: #4F46E5;
+    --accent-color: #EC4899;
+    --background-color: #111827;
+    --surface-color: #1F2937;
+    --surface-color-hover: #374151;
+    --text-primary: #F9FAFB;
+    --text-secondary: #D1D5DB;
+    --success-color: #10B981;
+    --warning-color: #F59E0B;
+    --error-color: #EF4444;
+    --border-color: rgba(255,255,255,0.1);
+}
+
+/* Global Styles */
+.stApp {
+    background-color: var(--background-color);
+}
+
+/* Sidebar Styling */
+section[data-testid="stSidebar"] {
+    background-color: var(--surface-color);
+    border-right: 1px solid var(--border-color);
+    padding: 2rem 0;
+}
+
+section[data-testid="stSidebar"] .block-container {
+    padding-top: 1rem;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-primary);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: 2.25rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 1.875rem;
+    margin-bottom: 1.25rem;
+}
+
+/* Card Components */
+div.stCard {
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+div.stCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.3);
+    background: var(--surface-color-hover);
+}
+
+/* Metrics Styling */
+div[data-testid="stMetricValue"] {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+div[data-testid="stMetricDelta"] {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+div[data-testid="stMetricLabel"] {
+    color: var(--text-secondary);
+}
+
+/* Button Styling */
+div.stButton > button {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+div.stButton > button:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Input Fields */
+div.stTextInput > div > div > input,
+div.stSelectbox > div > div > select,
+div.stNumberInput > div > div > input {
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+div.stTextInput > div > div > input:focus,
+div.stSelectbox > div > div > select:focus,
+div.stNumberInput > div > div > input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(124,58,237,0.2);
+}
+
+/* Tabs styling */
+div.stTabs {
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    background-color: transparent;
+}
+
+.stTabs [data-baseweb="tab"] {
+    height: 40px;
+    border-radius: 8px;
+    padding: 0 16px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.stTabs [data-baseweb="tab-highlight"] {
+    background-color: var(--primary-color);
+}
+
+/* Charts and Plots */
+div[data-testid="stPlotlyChart"] > div {
+    border-radius: 12px;
+    background: var(--surface-color);
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    border: 1px solid var(--border-color);
+}
+
+/* DataFrames */
+.dataframe {
+    border: none !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    margin: 1rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    background: var(--surface-color);
+    color: var(--text-primary);
+}
+
+.dataframe thead th {
+    background-color: var(--surface-color-hover);
+    padding: 1rem !important;
+    font-weight: 600;
+    color: var(--text-primary);
+    border: none !important;
+    text-align: left;
+}
+
+.dataframe tbody td {
+    padding: 1rem !important;
+    border: none !important;
+    border-top: 1px solid var(--border-color) !important;
+    color: var(--text-secondary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--surface-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--surface-color-hover);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Loading Animation */
+div.stSpinner > div {
+    border-color: var(--primary-color) transparent transparent transparent;
+}
+
+/* Alert/Info boxes */
+div.stAlert {
+    background-color: rgba(124,58,237,0.1);
+    color: var(--text-primary);
+    border: 1px solid rgba(124,58,237,0.2);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+/* Select boxes and dropdowns */
+div.stSelectbox > div > div,
+div.stMultiSelect > div > div {
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+}
+
+/* Radio and Checkbox */
+.stRadio > div,
+.stCheckbox > div {
+    color: var(--text-secondary);
+}
+
+/* Expander */
+.streamlit-expanderHeader {
+    color: var(--text-primary);
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+}
+
+.streamlit-expanderContent {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-top: none;
+} 

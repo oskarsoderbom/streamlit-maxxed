@@ -1,0 +1,8 @@
+streamlit>=1.29.0
+numpy==1.24.3
+pandas>=2.1.0
+plotly>=5.18.0
+pillow>=10.0.0
+hydralit-components==1.0.10
+streamlit-option-menu>=0.3.6
+streamlit-extras>=0.3.5 
