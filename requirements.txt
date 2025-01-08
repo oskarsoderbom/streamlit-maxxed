@@ -34,9 +34,9 @@ matplotlib==3.10.0
 mdurl==0.1.2
 more-itertools==10.5.0
 narwhals==1.21.1
-numpy==1.24.3
+numpy==1.26.4
 packaging==24.2
-pandas==2.2.3
+pandas==2.2.0
 pillow==11.1.0
 plotly==5.24.1
 prometheus_client==0.21.1
