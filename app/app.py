@@ -58,27 +58,33 @@ load_css()
 
 
 def get_config():
-    return {
-        "credentials": {
-            "usernames": {
-                "admin": {
-                    "email": os.getenv("ADMIN_EMAIL"),
-                    "name": os.getenv("ADMIN_NAME"),
-                    "password": os.getenv("ADMIN_PASSWORD"),
-                },
-                "analyst": {
-                    "email": os.getenv("ANALYST_EMAIL"),
-                    "name": os.getenv("ANALYST_NAME"),
-                    "password": os.getenv("ANALYST_PASSWORD"),
-                },
-            }
-        },
-        "cookie": {
-            "expiry_days": int(os.getenv("COOKIE_EXPIRY_DAYS", 30)),
-            "key": os.getenv("COOKIE_KEY"),
-            "name": os.getenv("COOKIE_NAME"),
-        },
-    }
+    # Try to load from config.yaml first (local development)
+    try:
+        with open("config.yaml") as file:
+            return yaml.safe_load(file)
+    except FileNotFoundError:
+        # Fallback to environment variables (production)
+        return {
+            "credentials": {
+                "usernames": {
+                    "admin": {
+                        "email": os.getenv("ADMIN_EMAIL"),
+                        "name": os.getenv("ADMIN_NAME"),
+                        "password": os.getenv("ADMIN_PASSWORD"),
+                    },
+                    "analyst": {
+                        "email": os.getenv("ANALYST_EMAIL"),
+                        "name": os.getenv("ANALYST_NAME"),
+                        "password": os.getenv("ANALYST_PASSWORD"),
+                    },
+                }
+            },
+            "cookie": {
+                "expiry_days": int(os.getenv("COOKIE_EXPIRY_DAYS", 30)),
+                "key": os.getenv("COOKIE_KEY"),
+                "name": os.getenv("COOKIE_NAME"),
+            },
+        }
 
 
 # Use this instead of loading config.yaml
