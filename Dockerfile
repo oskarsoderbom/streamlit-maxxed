@@ -2,15 +2,15 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
-    software-properties-common \
-    && rm -rf /var/lib/apt/lists/*
+# Debug: List contents of different directories
+RUN echo "Contents of /:" && ls -la / && \
+    echo "\nContents of current dir:" && ls -la
 
 # Copy all files at once
 COPY . .
+
+# Debug: List contents after copy
+RUN echo "\nContents after COPY:" && ls -la
 
 # Install Python dependencies
 RUN pip install -r requirements.txt
