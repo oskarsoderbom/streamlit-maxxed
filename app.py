@@ -56,30 +56,34 @@ def load_css():
 
 load_css()
 
-# Load authentication config
-with open("config.yaml") as file:
-    config = yaml.safe_load(file)
 
-# Create authentication credentials
-credentials = {
-    "usernames": {
-        "admin": {
-            "email": "admin@company.com",
-            "name": "Admin User",
-            "password": "$2b$12$WoNp6hULuz5AkeOpHsFY.uu7KSiHAF0BpEFRKZGHXqSsyLSTobZA6",  # admin123
+def get_config():
+    return {
+        "credentials": {
+            "usernames": {
+                "admin": {
+                    "email": os.getenv("ADMIN_EMAIL"),
+                    "name": os.getenv("ADMIN_NAME"),
+                    "password": os.getenv("ADMIN_PASSWORD"),
+                },
+                "analyst": {
+                    "email": os.getenv("ANALYST_EMAIL"),
+                    "name": os.getenv("ANALYST_NAME"),
+                    "password": os.getenv("ANALYST_PASSWORD"),
+                },
+            }
         },
-        "analyst": {
-            "email": "analyst@company.com",
-            "name": "Data Analyst",
-            "password": "$2b$12$WoNp6hULuz5AkeOpHsFY.uu7KSiHAF0BpEFRKZGHXqSsyLSTobZA6",  # admin123
+        "cookie": {
+            "expiry_days": int(os.getenv("COOKIE_EXPIRY_DAYS", 30)),
+            "key": os.getenv("COOKIE_KEY"),
+            "name": os.getenv("COOKIE_NAME"),
         },
     }
-}
 
-# Create the authenticator object
-authenticator = stauth.Authenticate(
-    credentials, "streamlit_auth_cookie", "random_signature_key", 30
-)
+
+# Use this instead of loading config.yaml
+config = get_config()
+authenticator = stauth.Authenticate(**config)
 
 # Authentication
 try:
